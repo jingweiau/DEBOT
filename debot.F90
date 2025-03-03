@@ -2368,7 +2368,7 @@ DO WHILE (ttjd<=ttjdEnd) 		! MAIN TIME CYCLUS !
 #ifdef viscousterm /* viscous term */
           +((cos_v(j+1)*e_pl(i,j+1)-cos_v(j)*e_pl(i,j))*dyinv+&			! ( d(cos(phi)2hE_LambdaPhi)/dphi
             (e_llpp(i,j)-e_llpp(i-1,j))*dxinv-&							! + d(h(E_LamLam-E_PhiPhi))/dlambda
-            vax4(j)*(e_pl(i,j+1)+e_pl(i,j)))*vax3(j)&						! - 2sin(phi)hE_LamPhi ) * A_H / (a**2 * cos(phi))
+            vax4(j)*(e_pl(i,j+1)+e_pl(i,j)))*(vax3(j)*1.0e-4_DP)*5.0_DP*b(i,j)&	     ! - 2sin(phi)hE_LamPhi ) * A_H / (a**2 * cos(phi))
 #endif
 
 #ifdef tidalforcing
@@ -2407,7 +2407,7 @@ DO WHILE (ttjd<=ttjdEnd) 		! MAIN TIME CYCLUS !
 #ifdef viscousterm																/* viscous term */
           +((cos_u(j-1)*e_llpp(i,j-1)-cos_u(j)*e_llpp(i,j))*dyinv+&		! ( d(cos(phi)*h(E_PhiPhi-E_LamLam))/dphi
           (e_pl(i+1,j)-e_pl(i,j))*dxinv+&								! + d(2hE_LamPhi)/dlambda
-          vay4(j)*(e_llpp(i,j)+e_llpp(i,j-1)))*vay3(j)&					! - sin(phi)(h(E_PhiPhi-E_LamLam)) ) * A_H / (a**2 * cos(phi))
+          vay4(j)*(e_llpp(i,j)+e_llpp(i,j-1)))*(vay3(j)*1.0e-4_DP)*5.0_DP*b(i,j)&		! - sin(phi)(h(E_PhiPhi-E_LamLam)) ) * A_H / (a**2 * cos(phi))
 #endif
 
 #ifdef tidalforcing
